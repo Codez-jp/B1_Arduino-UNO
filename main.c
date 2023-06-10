@@ -1,26 +1,21 @@
+// #include "avr/io.h"
 #define F_CPU 16000000UL
-#include "util/delay.h"
+#include "util/delay.h"  // _delay_ms()
 
-#define MY_DDRB (*(volatile uint8_t *)(0x24))
-#define MY_PORTB (*(volatile uint8_t *)(0x25))
-#define MY_PORTB5 5
-
-
-void setup( void ){
-    MY_DDRB |= (1 << MY_PORTB5);
-    MY_PORTB |= (1 << MY_PORTB5);
-}
+#define MY_DDRB (*(volatile unsigned char *)(0x24))
+#define MY_PORTB (*(volatile unsigned char *)(0x25))
 
 int main( void ) {
-    setup();
-    
+    // setup())
+    MY_DDRB |= (1 << 5);  // MY_DDRB = 0b00100000;
+  
     while( 1 ){
-        MY_PORTB = (1 << MY_PORTB5);
-        _delay_ms(10);
+        // Loop()
+        MY_PORTB |= (1 << 5);
+        _delay_ms(1500);
 
-        MY_PORTB &= ~(1 << MY_PORTB5);
-        _delay_ms(2990);        
+        MY_PORTB &= ~(1 << 5);
+        _delay_ms(1500);        
     }
-    return(1);
+    return 0;
 }
-
