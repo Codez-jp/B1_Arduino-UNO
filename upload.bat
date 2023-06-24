@@ -1,5 +1,7 @@
 echo off
 
+set PORT=COM3
+
 rem echo ====== for testing ======
 rem echo ProgramFiles(x86)  %ProgramFiles(x86)%
 rem echo ProgramFiles       %ProgramFiles%
@@ -33,7 +35,9 @@ set HEX=%CD%\dist\default\production\%FOLDER%.production.hex
 if not exist "%HEX%" goto not_found_hex
 echo HEX    %HEX%
 
-set CMD="%ROOT%%TOOL%" -C "%ROOT%%CONF%" -patmega328p -carduino -PCOM3 -b115200 -D -U flash:w:%HEX%:i
+echo PORT   %PORT%
+
+set CMD="%ROOT%%TOOL%" -C "%ROOT%%CONF%" -patmega328p -carduino -P%PORT% -b115200 -D -U flash:w:"%HEX%":i
 echo CMD        %CMD%
 %CMD% -v
 goto :OK
