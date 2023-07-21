@@ -6,6 +6,8 @@
 #define MY_PORTB (*(volatile unsigned char *)(0x25))
 
 
+
+
 void setup( void ) {  // setup()
     MY_DDRB |= (1 << 5);  // set portB bit6 OUTPUT -> 0b00100000
 }
