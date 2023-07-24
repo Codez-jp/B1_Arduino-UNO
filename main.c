@@ -2,9 +2,6 @@
 #define F_CPU 16000000UL
 #include "util/delay.h"  // _delay_ms()
 
-sss
-sss
-
 #define MY_DDRB (*(volatile unsigned char *)(0x24))
 #define MY_PORTB (*(volatile unsigned char *)(0x25))
 
